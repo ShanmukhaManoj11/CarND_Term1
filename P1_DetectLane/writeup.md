@@ -33,12 +33,15 @@ g. overlay detected lines on the initial image
 
 Function "draw_lines_2" draws extended lanes on the image by averaging the lines detected from the above pipeline. 
 Following is a high level description of the function draw_lines_2,
+
 	a. A threshold of 0.5 is applied to the slopes, i.e. 
         all lines with slope < -0.5 are considered to be part of the left lane and 
-        lines with slope > 0.5 are considered to be part of right lane       
+        lines with slope > 0.5 are considered to be part of right lane 
+		
     b. Lines gathered as part of left lane are then sorted based on their lengths and in the hough space (i.e., m-b space)
     average 'm' and 'b' values are calucalted from the top 5 lines with higher lengths. 
-    Similarly average slope and intercept (m and b) for the right lane are found    
+    Similarly average slope and intercept (m and b) for the right lane are found   
+	
     c. Then with the m,b values in hough space, corresponding points on the image plane are calculated by substituing y values
     in the line equation y = mx+b such that the lanes, that would be drawn on to the image,
     are fully drawn in the region of interest
