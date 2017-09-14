@@ -14,12 +14,19 @@
 ### 1. Pipeline
 
 This pipeline includes 7 steps. 
+
 a. Read frame/ image - either from file or from video clip
+
 b. convert the image into grayscale
+
 c. apply gaussian kernel and blur the grayscale image
+
 d. apply canny edge detection on the blurred image and find edge image (thresholded image with edges)
+
 e. with predetermined polygon constituting a region of interest, create a mask and apply the mask to the edge image (canny output)
+
 f. detect lines in the masked image using hough transforms
+
 g. overlay detected lines on the initial image
 
 ![alt text][image1]
