@@ -15,7 +15,7 @@ The goals / steps of this project are the following:
 
 [example_data]: ./images_for_writeup/example_data.jpg "Example Data"
 [counts_per_class_train_data]: ./images_for_writeup/counts_per_class_train_data.jpg "Counts per class in training data set"
-[counts_per_class_validation_data]: ./images_for_writeup/counts_per_class_validation_data.jpg "Counts per class in validation data set"
+[counts_per_class_validation_data]: ./images_for_writeup/counts_per_class_validation_data.JPG "Counts per class in validation data set"
 [counts_per_class_test_data]: ./images_for_writeup/counts_per_class_test_data.jpg "Counts per class in testing data set"
 [example_augmented_data]: ./images_for_writeup/example_augmented_data.jpg "Example augmented data"
 [lenet_architecture]: ./images_for_writeup/lenet_architecture.jpg "lenet architecture"
