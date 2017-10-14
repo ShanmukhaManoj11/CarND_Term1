@@ -19,7 +19,7 @@ The goals / steps of this project are the following:
 [counts_per_class_test_data]: ./images_for_writeup/counts_per_class_test_data.jpg "Counts per class in testing data set"
 [example_augmented_data]: ./images_for_writeup/example_augmented_data.jpg "Example augmented data"
 [lenet_architecture]: ./images_for_writeup/lenet_architecture.jpg "lenet architecture"
-[NN_architecture]: ./images_for_writeup/NN_architecture.jpg "NN architecture"
+[NN_architecture]: ./images_for_writeup/NN_architecture1.jpg "NN architecture"
 [test_image1]: ./examples/test_image1.jpg "Traffic Sign 1"
 [test_image2]: ./examples/test_image2.jpg "Traffic Sign 2"
 [test_image3]: ./examples/test_image3.jpg "Traffic Sign 3"
@@ -121,27 +121,19 @@ However by the end of run 4, training accuracy reached 100% and validation accur
 * validation accuracy = 0.9737
 * test accuracy = 0.9788
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
+I have used the color images for training, as I feel providing color images instead of gray scale might allow network to learn better by extracting features pertaining to color channels.
+I have stated with simple lenet architecture which resulted in lower accuracies, and hence made the network deep by adding more kernels for convolution operation and decreasing learning rate after certain no. of epochs.
+With this approach validation accuracy has reached 98.71%
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
- 
+Then to compare, I have tried implementing architecture described in Sermanet and Lecunn's paper. This architecture contains skip connections and I felt this would allow the fully connected classifier layer to receive both high level and low level features as input.
+My implementation of that architecture ('NN') has started overfitting the training data, so probably I should have reduced the no. of nodes by applying further maxpooling to the branched skip connections (see the NN architecture image above for details)
 
-###Test a Model on New Images
-
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+### Test on New Images from web
 
 Here are five German traffic signs that I found on the web:
 
-![alt text][image4] ![alt text][image5] ![alt text][image6] 
-![alt text][image7] ![alt text][image8]
+![alt text][test_image1] ![alt text][test_image2] ![alt text][test_image3] 
+![alt text][test_image4] ![alt text][test_image5]
 
 The first image might be difficult to classify because ...
 
