@@ -27,7 +27,7 @@ The goals / steps of this project are the following:
 [test_image5]: ./examples/test_image5.jpg "Traffic Sign 5"
 [resized_test_data]: ./images_for_writeup/resized_test_data.jpg "Resized test images" 
 [test_predictions_lenet_architecure]: ./images_for_writeup/test_predictions_lenet_architecure.jpg "Top 5 predictions for each test image - lenet" 
-[test_predictions_NN_architecure]: ./images_for_writeup/test_predictions_NN_architecure.jpg "Top 5 predictions for each test image - NN" 
+[test_predictions_NN_architecure]: ./images_for_writeup/test_predictions_NN_architecure.JPG "Top 5 predictions for each test image - NN" 
 
 ## Rubric Points
 ### Writeup / README
@@ -155,3 +155,7 @@ Following figure shows the top 5 predictions lenet architecture provides for eac
 Following figure shows the top 5 predictions NN architecture provides for each image among the new test images
 
 ![alt text][test_predictions_NN_architecure]
+
+#### Comments on the accuracies achieved on the new test images
+
+Out of the 5 images downloaded from the web, NN architecture has wrongly predicted 2 of them and lenet architecture has wrongly predicted 1 of them. The reason for the wrong prediction might be the presence of backgound scene in the image. If notices carefully all the images used for triaining have above 80% of the pixels filled only with the sign related intensities and only less than 20% is background, but that's not the case in those images downloaded from web - more than 50% in the image contains backgound details. This might be a reason for the wrong predictions
