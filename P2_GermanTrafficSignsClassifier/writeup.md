@@ -1,4 +1,4 @@
-#**Traffic Sign Recognition** 
+# **Traffic Sign Recognition** 
 
 **Build a Traffic Sign Recognition Project**
 
@@ -25,6 +25,9 @@ The goals / steps of this project are the following:
 [test_image3]: ./examples/test_image3.jpg "Traffic Sign 3"
 [test_image4]: ./examples/test_image4.jpg "Traffic Sign 4"
 [test_image5]: ./examples/test_image5.jpg "Traffic Sign 5"
+[resized_test_data]: ./images_for_writeup/resized_test_data.jpg "Resized test images" 
+[test_predictions_lenet_architecure]: ./images_for_writeup/test_predictions_lenet_architecure.jpg "Top 5 predictions for each test image - lenet" 
+[test_predictions_NN_architecure]: ./images_for_writeup/test_predictions_NN_architecure.jpg "Top 5 predictions for each test image - NN" 
 
 ## Rubric Points
 ### Writeup / README
@@ -135,41 +138,20 @@ Here are five German traffic signs that I found on the web:
 ![alt text][test_image1] ![alt text][test_image2] ![alt text][test_image3] 
 ![alt text][test_image4] ![alt text][test_image5]
 
-The first image might be difficult to classify because ...
+All the above images are resized to 32x32x3 and the normalized as explained above.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+Following are the resized test images with their original labels,
 
-Here are the results of the prediction:
+![alt text][resized_test_data]
 
-| Image			        |     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+#### Perfromance of lenet architecture on the new test images
 
+Following figure shows the top 5 predictions lenet architecture provides for each image among the new test images
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+![alt text][test_predictions_lenet_architecure]
 
-####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
+#### Perfromance of NN architecture on the new test images
 
-The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
+Following figure shows the top 5 predictions NN architecture provides for each image among the new test images
 
-For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
-
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
-
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
-
-
+![alt text][test_predictions_NN_architecure]
