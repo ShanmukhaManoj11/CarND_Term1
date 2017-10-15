@@ -158,7 +158,7 @@ Following are the resized test images with their original labels,
 
 **Comments on the new test images:**
 
-The images with the speed limit 30 kmph sign and stop sign from the new test set, contains more than 50% background information in them. If we closely observe the training data set on which the network has been trained, the background details in them are less than 20%. So probably aforementioned test images might be difficult to classify - by which I mean that the network might miss classify these images.
+The images with the speed limit 30 kmph sign and stop sign from the new test set, contains more than 50% background information in them. If we closely observe the training data set on which the network has been trained, the background details in them are less than 20%. Also after resizing using cv2.resize function, these images have lost some information - for example look at the resized stop sign in the above image. So probably aforementioned test images might be difficult to classify - by which I mean that the network might miss classify these images.
 
 #### Perfromance of lenet architecture on the new test images
 
