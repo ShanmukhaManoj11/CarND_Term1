@@ -68,6 +68,12 @@ Inorder to provide the network with lots of data, additional images can be gener
 
 For every image in the training data set, 3 random image transformations are applied and a final data set with 4 times the size of given data set is generated
 
+**Probable issues with my data augmentation procedure:**
+
+In the above histogram of counts per class in training data, the distribution of data is unequal - certain classes have more examples and other classes have fewer. New images can also be generated (by performing random transformations as explained above) for the classes with fewer examples and make the data distribution equal.
+This helps the network to learn equally on each class type thus increasing precision in prediction. But the data augmentation procedure I haved used in the project, is that for every training image (irrespective of which class it belongs to) I have generated 3 new example performing random transformations. By doing this the resutling new data distribution is the same as the original distribution.
+So, probably I should have used data augmentation to make the distribution more even rather than simply generating new images for every image
+
 ![alt text][example_augmented_data]
 
 **Data Normalization:**
@@ -75,6 +81,12 @@ For every image in the training data set, 3 random image transformations are app
 Every image is normalized by applying the following transformation to each pixel,
 
 pixel = (pixel - 128.0)/128.0
+
+By applying this, mean is shifted to 0 and thus makes the data dsitributed around the 0 mean which help the optimizer to converge easily. Without data normalization, optimizer generally takes lot of steps to converge.
+
+**Didn't convert images to gray scale:**
+
+In this experiment I have used RGB images for triaining rather than converting them to gray scale in preprocessing stage. Though converting to gray scale reduces input image dimension and might reduce the training complexity, I assumed that using RGB images might help the network to extract features pertaining to each color channel while learning to classify the input. Probably I should perform experiments with gray scale images to compare the results.
 
 ### The definitions of model architecture are included in the "utils.py" script along with definition of class "Model" that provides functions "train" and "evaluate" data set
 
@@ -143,6 +155,10 @@ All the above images are resized to 32x32x3 and the normalized as explained abov
 Following are the resized test images with their original labels,
 
 ![alt text][resized_test_data]
+
+**Comments on the new test images:**
+
+The images with the speed limit 30 kmph sign and stop sign from the new test set, contains more than 50% background information in them. If we closely observe the training data set on which the network has been trained, the background details in them are less than 20%. So probably aforementioned test images might be difficult to classify - by which I mean that the network might miss classify these images.
 
 #### Perfromance of lenet architecture on the new test images
 
