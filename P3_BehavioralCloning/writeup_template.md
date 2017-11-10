@@ -59,6 +59,7 @@ Data augmentation is necessary for training the network. Apart from using images
 * randomly flip the image
 * resized to 66x200 (input for NVIDIA architecture)
 
+The above techniques are inspired from the following work - https://chatbotslife.com/using-augmentation-to-mimic-human-driving-496b569760a9
 Following are sample preprocessed images
 ![alt text][image2]
 
