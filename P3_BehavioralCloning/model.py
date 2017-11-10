@@ -18,6 +18,7 @@ from keras.callbacks import ModelCheckpoint, Callback
 import matplotlib.pyplot as plt
 
 def random_brightness_adjustment(image):
+    # adds random brightness to the image
     img=cv2.cvtColor(image,cv2.COLOR_RGB2HSV)
     img=np.array(img,dtype=np.float64)
     random_brightness=0.5+np.random.uniform()
@@ -28,6 +29,8 @@ def random_brightness_adjustment(image):
     return img
 
 def random_translation(image,angle):
+    # translates the image randomly in horizontal and vertical directions
+    # for every pixel translation in x direction, angle is adjusted by adding (or) subtracting 0.004 to the angle depending on direction of translation
     rows,cols,ch=image.shape
     tr_x=100*(np.random.uniform()-0.5)
     tr_y=40*(np.random.uniform()-0.5)
@@ -37,6 +40,7 @@ def random_translation(image,angle):
     return image,angle
 
 def random_shadow_addition(image):
+    # adds random shadow spanning top to bottom of the image
     top_x=0
     bottom_x=160
     top_y=320*np.random.uniform()
@@ -57,6 +61,7 @@ def random_shadow_addition(image):
     return image
 
 def preprocess(image,angle):
+    # preprocessing the image
     shape=image.shape
     image=random_brightness_adjustment(image)
     image=random_shadow_addition(image)
@@ -70,6 +75,7 @@ def preprocess(image,angle):
     return image,angle
 
 def data_generator(image_paths,steering_measurements,batch_size=128):
+    # data generator generating the batches for training
     n_samples=len(image_paths)
     i=0
     batch_images=[]
@@ -136,6 +142,7 @@ with open('./steering_measurements.p','rb') as f:
 print('Train: ',train_image_paths.shape,train_steering_measurements.shape)
 
 #############################################################################################
+### initial data analysis
 ##batch_size=6
 ##threshold=0.5
 ##train_data_generator=data_generator(train_image_paths,train_steering_measurements,batch_size=batch_size)

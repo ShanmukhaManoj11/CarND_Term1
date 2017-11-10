@@ -19,8 +19,8 @@ def load_data(path='./sample_data/'):
                 img_path=path+'IMG/'+row[col].strip().replace('\\','/').split('/')[-1]
                 image_paths.append(img_path)
             steering_measurements.append(float(row[3]))
-            steering_measurements.append(float(row[3])+0.25)
-            steering_measurements.append(float(row[3])-0.25)
+            steering_measurements.append(float(row[3])+0.25) # adjusting steering angle for left camera image by adding 0.25
+            steering_measurements.append(float(row[3])-0.25) # adjusting steering angle for left camera image by subtracting 0.25
 
     return np.array(image_paths),np.array(steering_measurements)
 
