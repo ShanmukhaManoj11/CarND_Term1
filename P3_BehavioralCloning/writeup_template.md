@@ -20,14 +20,14 @@ The goals / steps of this project are the following:
 
 My project includes the following files:
 * data_loading.py - loads data from all the 3 cameras along with measured steering angle adjustments (increment by +0.25 for images from left camera and -0.25 for images from right camera)
-* model.py - containing the script to create and train the model
+* model.py - containing the script to create and train the model 
 * drive.py - for driving the car in autonomous mode
-* model.h5 - containing a trained convolution neural network 
+* model_NVIDIA.h5 - containing a trained convolution neural network (NVIDIA architecture)
 * writeup_report.md - summarizing the results
 
 Using the Udacity provided simulator and my drive.py file, the car can be driven autonomously around the track by executing 
 ```sh
-python drive.py model.h5
+python drive.py model_NVIDIA.h5
 ```
 
 The model.py file contains the code for training and saving the convolution neural network. The file shows the pipeline I used for training and validating the model, and it contains comments to explain how the code works.
