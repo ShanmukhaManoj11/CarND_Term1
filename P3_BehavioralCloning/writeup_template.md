@@ -67,7 +67,7 @@ Following are sample preprocessed images
 Instead of having all the images loaded in memory, **data_generator** is used to create batches of images. Also, the data distribution is not even as shown below
 ![alt text][image3]
 
-I have then assumed that the angles whose absolute value < 0.1 are considered low and since the measurements are more in the 'low' zone, for the model to learn unifromly follwoing strategy is implemented
+I have then assumed that the angles whose absolute value < 0.1 are considered low and since the measurements are more in the 'low' zone, for the model to learn unifromly follwoing strategy (inspired from the work referenced above for the data augmentation) is implemented
 * At the start of every epoch a threshold is defined as 1/(epoch+1), where epoch starts from 0
 * if the absolute value of measured steering angle is < 0.1 and a random number in range [0,1) is < threshold value - the corresponing data set is not added to the batch, otherwise added to the bacth 
 
