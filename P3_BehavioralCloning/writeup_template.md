@@ -36,7 +36,7 @@ The model.py file contains the code for training and saving the convolution neur
 
 #### 1. NVIDIA architecture
 
-I have used the [NVIDIA model] (https://arxiv.org/pdf/1604.07316.pdf) in this project. Following image describes the architecture in detail.
+I have used the NVIDIA model (https://arxiv.org/pdf/1604.07316.pdf) in this project. Following image describes the architecture in detail.
 
 ![alt text][image1]
 
