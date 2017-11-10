@@ -218,9 +218,9 @@ def create_CONV_architecture(load_trained_model=False,trained_model=''):
 ####################################################################################
 #Training NVIDIA architecture
 model=create_NVIDIA_architecture()
-for i in range(8):
+for i in range(15):
     threshold=1/(i+1)
-    history=model.fit_generator(train_data_generator,steps_per_epoch=10000,\
+    history=model.fit_generator(train_data_generator,steps_per_epoch=2000,\
                                 epochs=1,verbose=1)
 print(model.summary())
 model.save('./model_NVIDIA.h5')
