@@ -25,20 +25,38 @@ def load_data(path='./sample_data/'):
     return np.array(image_paths),np.array(steering_measurements)
 
 data_path='./sample_data/'
-image_paths1,steering_measurements1=load_data(path=data_path)
-print('data size (sample data): images - ',image_paths1.shape,' steering measurements - ',steering_measurements1.shape)
-##data_path='./collected_data/'
-##image_paths2,steering_measurements2=load_data(path=data_path)
-##print('data size (collected data): images - ',image_paths2.shape,' steering measurements - ',steering_measurements2.shape)
-image_paths2=[]
-steering_measurements2=[]
+image_paths,steering_measurements=load_data(path=data_path)
+print('data size (sample data): images - ',image_paths.shape,' steering measurements - ',steering_measurements.shape)
 
-image_paths=np.concatenate((image_paths1,image_paths2))
-steering_measurements=np.concatenate((steering_measurements1,steering_measurements2))
-print('data size (sample+collected): images - ',image_paths.shape,' steering measurements - ',steering_measurements.shape)
+def visualize(image_path=[],steering_measurements=[]):
+    for i in range(0,len(image_paths),3):
+        image=cv2.imread(image_paths[i])
+        shape=image.shape
+        image=image[math.ceil(shape[0]/3):shape[0]-25,:,:]
+        new_y=shape[0]-25-math.ceil(shape[0]/3)
+        angle=steering_measurements[i]
+        cv2.line(image,(shape[1]/2,new_y),(int(shape[1]/2+20*math.sin(angle)),int(new_y-20*math.cos(angle))),(0,255,0),3)
+        cv2.putText(image,str(angle),(10,10),cv2.FONT_HERSHEY_SIMPLEX,0.3,(0,0,255),2,cv2.LINE_AA)
+	cv2.imshow('',image)
+        cv2.waitKey(10)
+
+##Uncomment to visualize data
+#visualize(image_paths,steering_measurements)
+
 image_paths,steering_measurements=shuffle(image_paths,steering_measurements)
 
-with open('./image_paths.p','wb') as f:
-    pickle.dump(image_paths,f,protocol=pickle.HIGHEST_PROTOCOL)
-with open('./steering_measurements.p','wb') as f:
-    pickle.dump(steering_measurements,f,protocol=pickle.HIGHEST_PROTOCOL)
+train_image_paths,validation_image_paths,train_steering_measurements,validation_steering_measurements=train_test_split(image_paths,steering_measurements,test_size=0.15)
+
+print('data size (train): images - '+str(train_image_paths.shape)+' steering measurements - '+str(train_steering_measurements.shape))
+print('data size (validation): images - '+str(validation_image_paths.shape)+' steering measurements - '+str(validation_steering_measurements.shape))
+
+with open('./train_image_paths.p','wb') as f:
+    pickle.dump(train_image_paths,f,protocol=pickle.HIGHEST_PROTOCOL)
+with open('./train_steering_measurements.p','wb') as f:
+    pickle.dump(train_steering_measurements,f,protocol=pickle.HIGHEST_PROTOCOL)
+
+with open('./validation_image_paths.p','wb') as f:
+    pickle.dump(validation_image_paths,f,protocol=pickle.HIGHEST_PROTOCOL)
+with open('./validation_steering_measurements.p','wb') as f:
+    pickle.dump(validation_steering_measurements,f,protocol=pickle.HIGHEST_PROTOCOL)
+

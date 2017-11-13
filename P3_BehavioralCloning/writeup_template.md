@@ -13,9 +13,9 @@ The goals / steps of this project are the following:
 [image1]: ./examples/NVIDIA_architecture.JPG "NVIDIA architecture"
 [image2]: ./examples/preprocessed_image_samples.png "Preprocessed samples"
 [image3]: ./examples/data_distribution.png "Data distribution"
-[image4]: ./examples/placeholder_small.png "Recovery Image"
-[image5]: ./examples/placeholder_small.png "Recovery Image"
-[image6]: ./examples/placeholder_small.png "Normal Image"
+[image4]: ./examples/loss_vs_valLoss.png "Loss vs Val Loss"
+[image5]: ./examples/valLoss.png "Val loss"
+[image6]: ./examples/data_and_preprocessed.png "sample data"
 [image7]: ./examples/placeholder_small.png "Flipped Image"
 
 My project includes the following files:
@@ -48,6 +48,12 @@ I have used 'ELU' activation at each layer (except the last layer with one outpu
 I have used only **sample data** (provided by the Udacity) for training the model.
 Though I have collected data, I have found issues with the results when I used that.
 So, as advised by mentor, I went forward with only the provided sample data.
+This sample data is further randomly divided into (85%) train data and (15%) validation data.
+
+Following are few sample images from the training data, along with corresponding preprocessed images fed into the model during training,
+![alt text][image6]
+
+The preprocessing strategy used is explained below.
 
 #### 3. Training Procedure
 
@@ -75,6 +81,16 @@ This makes the intial batches with more of the angles in the 'high' zone (whose 
 This allows the trained model to not be biased more with 'low' zone angles.
 
 The model used an adam optimizer with initial learning rate = 0.0001.
+
+The model was trained for 10 epochs, each epoch with batch size 128 and 2000 steps which makes 128*2000 images fed into the network for training at each epoch. And also the epoch that achieved the least validation loss is saved as the final model. 
+
+Following plot shows the training loss and validation reducing with epoch,
+![alt text][image4]
+
+For a closer look into the validation loss -
+![alt text][image5]
+
+The model saved corresponds to the minimum validation loss achieved at epoch 4.
 
 #### 4. Performance
 
