@@ -86,16 +86,12 @@ With the position of left and right lane, average between the two values gives t
 
 ---
 
-### Pipeline (video)
+### Result on video
 
-#### 1. Provide a link to your final video output.  Your pipeline should perform reasonably well on the entire project video (wobbly lines are ok but no catastrophic failures that would cause the car to drive off the road!).
-
-Here's a [link to my video result](./project_video.mp4)
+Here's a [link to my video result](./test_videos_output/project_video.mp4)
 
 ---
 
 ### Discussion
 
-#### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
+Though the implementation works quite good on the project video, it fails to perfrom well on the challenge video. Here is the [link] (./test_videos_output/challenge_video.mp4) to my challenge video output. Probably playing with the pipeline thresholding color and gradients might improve the performance. Also currently I am just using one previous fit data, if a history of fits (may be 3 or 5 previous fits) could be included, this might omprove the perfromace by resutling in a more smoother lane detection.
