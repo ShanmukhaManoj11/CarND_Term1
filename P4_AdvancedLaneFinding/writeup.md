@@ -9,7 +9,7 @@
 
 [//]: # (Image References)
 
-[image1]: ./examples/undistort_output.png "Undistorted"
+[image1]: ./writeup_images/undistorted_image1.JPG "Undistorted"
 [image2]: ./writeup_images/undistorted_image.jpg "undistorted image example"
 [image3]: ./writeup_images/thresholded_image.JPG "thresholded image example"
 [image4]: ./writeup_images/roi_mask_applied.JPG "roi mask applied example"
