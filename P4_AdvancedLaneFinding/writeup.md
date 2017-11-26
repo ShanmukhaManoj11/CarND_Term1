@@ -1,5 +1,12 @@
 ## Advanced Lane Finding Project
 
+### Files inculded
+
+1. writeup.md - the writeup file
+2. project4_1.ipynb - code for calibrating camera and computing camera matrix and distortion coefficients
+3. project4_2.ipynb - pipeline and code for finding lanes in images and videos. Also inculdes sample images
+4. ./test_videos_output - results of finding lanes in videos
+
 [//]: # (Image References)
 
 [image1]: ./examples/undistort_output.png "Undistorted"
@@ -95,4 +102,4 @@ Here's a [link to my video result](./test_videos_output/project_video.mp4)
 
 ### Discussion
 
-Though the implementation works quite good on the project video, it fails to perfrom well on the challenge video. Here is the [link] (./test_videos_output/challenge_video.mp4) to my challenge video output. Probably playing with the pipeline thresholding color and gradients might improve the performance. Also currently I am just using one previous fit data, if a history of fits (may be 3 or 5 previous fits) could be included, this might omprove the perfromace by resutling in a more smoother lane detection.
+Though the implementation works quite good on the project video, it fails to perfrom well on the challenge video. Here is the [link](./test_videos_output/challenge_video.mp4)  to my challenge video output. Probably playing with the pipeline thresholding color and gradients might improve the performance. Also currently I am just using one previous fit data, if a history of fits (may be 3 or 5 previous fits) could be included, this might omprove the perfromace by resutling in a more smoother lane detection.
