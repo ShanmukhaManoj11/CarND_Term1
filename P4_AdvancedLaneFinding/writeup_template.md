@@ -3,11 +3,10 @@
 [//]: # (Image References)
 
 [image1]: ./examples/undistort_output.png "Undistorted"
-[image2]: ./test_images/test1.jpg "Road Transformed"
-[image3]: ./writeup_images/undistorted_image.jpg "Binary Example"
-[image4]: ./examples/warped_straight_lines.jpg "Warp Example"
-[image5]: ./examples/color_fit_lines.jpg "Fit Visual"
-[image6]: ./examples/example_output.jpg "Output"
+[image2]: ./writeup_images/undistorted_image.jpg "undistorted image example"
+[image3]: ./writeup_images/thresholded_image.jpg "thresholded image example"
+[image4]: ./writeup_images/roi_mask_applied.jpg "roi mask applied example"
+[image5]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
 ### Camera Calibration
@@ -22,18 +21,23 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ### Pipeline (single images)
 
-#### 1. Undistorte images
+#### 1. Undistort images
 
 From the camera matrix and distortion coefficients computed in the above step, `cv2.undistort()` function is used to undistort the images. Following image shows the undistorted image of a test image,
 
 ![alt text][image2]
 
 
-#### 2. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
+#### 2. Pipeline to detect lanes
 
-I used a combination of color and gradient thresholds to generate a binary image (thresholding steps at lines # through # in `another_file.py`).  Here's an example of my output for this step.  (note: this is not actually from one of the test images)
+First converted the BGR image to HLS using `cv2.cvtColor()` and then thresholded the S channel and gradient of L channel in x and y directions of L channel. Refer to `pipeline()` function in the **project4_2.ipynb**
 
 ![alt text][image3]
+
+Then a region of interest mask is applied on the thresholded image to remove pixels that most porbably don't include in a lane. Following image shows a sample after applying the mask.
+
+![alt text][image4]
+
 
 #### 3. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
