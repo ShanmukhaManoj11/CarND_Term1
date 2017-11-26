@@ -9,7 +9,8 @@
 [image5]: ./writeup_images/warped_binary.JPG "warped binary example"
 [image6]: ./writeup_images/lanes_drawn_warped.JPG "lanes on warped binary example"
 [image7]: ./writeup_images/sample_result.JPG "sample result"
-[video1]: ./project_video.mp4 "Video"
+[video1]: ./test_videos_output/project_video.mp4 "Video"
+[video2]: ./test_videos_output/challenge_video.mp4 "challenge Video"
 
 ### Camera Calibration
 
