@@ -1,4 +1,4 @@
-**Advanced Lane Finding Project**
+## Advanced Lane Finding Project
 
 [//]: # (Image References)
 
@@ -7,6 +7,8 @@
 [image3]: ./writeup_images/thresholded_image.JPG "thresholded image example"
 [image4]: ./writeup_images/roi_mask_applied.JPG "roi mask applied example"
 [image5]: ./writeup_images/warped_binary.JPG "warped binary example"
+[image6]: ./writeup_images/lanes_drawn_warped.JPG "lanes on warped binary example"
+[image7]: ./writeup_images/sample_result.JPG "sample result"
 [video1]: ./project_video.mp4 "Video"
 
 ### Camera Calibration
@@ -19,7 +21,7 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 
 ![alt text][image1]
 
-### Pipeline (single images)
+### Pipeline
 
 #### 1. Undistort images
 
@@ -27,6 +29,7 @@ From the camera matrix and distortion coefficients computed in the above step, `
 
 ![alt text][image2]
 
+After undistorting, I have smoothed the resulted image with gaussian blur.
 
 #### 2. Pipeline to detect lanes
 
@@ -50,25 +53,36 @@ src_pts_test=np.float32(roi_vertices_test)
 dst_pts_test=np.float32([[(0,imshape[0]),(0,0),(imshape[1],0),(imshape[1],imshape[0])]])
 ```
 
-FOllowing image shows a transformed sample image. And observe that the left and right lanes are almost parallel to each other.
+Following image shows a transformed sample image. And observe that the left and right lanes are almost parallel to each other.
 
 ![alt text][image5]
 
-#### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
+#### 4. Find lane pixels and fit 2nd degree polynomial to the left and right lanes
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial kinda like this:
+For single image I have used the histogram technique explained in the lecture to locate the lanes starting positions and applied sliding window approach to find the pixels that correpsond to left and right lanes.
 
-![alt text][image5]
+For video input, to the initial frames histogram technique is applied. For the subsequent frames, since the previous lane positions are known, I have used the previous fit to locate the lanes and slided the windows to the top to compute new fits. Also, I have averaged the new fits using first order filter with a coefficient of 0.1
 
-#### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
-
-I did this in lines # through # in my code in `my_other_file.py`
-
-#### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
-
-I implemented this step in lines # through # in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+After pixels correspoinding to the lanes are located, 2nd degree polynomial fits are computed. Image below shows a sample warped image with lanes drawn.
 
 ![alt text][image6]
+
+Then using `cv2.fillPoly()` the lane region is computed on a mask and the mask is overlayed on an empty image. This image is unwarped using the inverse transformation matrix, and a weighted average of the unwarped image and the undistorted image is the result.
+
+#### 5. Calculating radius of curvature and offset from the lane center.
+
+As described in the lecture video, I have applied the formula for calcualting radius of curvature. Following function is does the radius calculation, where the 2nd order polynomial fit is given as x=Ay^2+By+C
+
+```python
+def calculate_ROC(A,B,y): 
+    return ((1+((2*A*y+B)**2))**1.5)/(2*A)
+```
+
+With the position of left and right lane, average between the two values gives the location of the camera and the difference between position of the x-center in the image and the camera location gives the offset from the lane center in pixels.
+
+#### Sample result
+
+![alt text][image7]
 
 ---
 
