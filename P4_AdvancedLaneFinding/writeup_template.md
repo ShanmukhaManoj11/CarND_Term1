@@ -4,8 +4,8 @@
 
 [image1]: ./examples/undistort_output.png "Undistorted"
 [image2]: ./writeup_images/undistorted_image.jpg "undistorted image example"
-[image3]: ./writeup_images/thresholded_image.jpg "thresholded image example"
-[image4]: ./writeup_images/roi_mask_applied.jpg "roi mask applied example"
+[image3]: ./writeup_images/thresholded_image.JPG "thresholded image example"
+[image4]: ./writeup_images/roi_mask_applied.JPG "roi mask applied example"
 [image5]: ./examples/example_output.jpg "Output"
 [video1]: ./project_video.mp4 "Video"
 
