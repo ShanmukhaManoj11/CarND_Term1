@@ -1,5 +1,14 @@
 **Vehicle Detection Project**
 
+#### Files included
+
+1. writeup.md - discussion about the project implementation
+2. utils.py - python code with all the functions required for the project
+3. project5.ipynb - ipython notebook for the step-by-step implementation
+4. sample.ipynb - ipython notebook generating images for illustration
+5. test_videos_output/ - folder containing output video
+6. output_images/ - folder containing output images
+
 The goals / steps of this project are the following:
 
 * Perform a Histogram of Oriented Gradients (HOG) feature extraction on a labeled training set of images and train a classifier Linear SVM classifier
