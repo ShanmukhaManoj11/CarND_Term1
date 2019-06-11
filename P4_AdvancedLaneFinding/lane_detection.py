@@ -1,9 +1,13 @@
 import numpy as np
 import cv2
 import os
+import matplotlib.pyplot as plt
 
 def display(window_name,img,pts=[]):
 	copy=img.copy()
+	if len(copy.shape)<3:
+		copy=np.expand_dims(copy,axis=2)
+		copy=np.concatenate([copy,copy,copy],axis=2)
 	if len(pts)!=0:
 		for p in pts:
 			cv2.circle(copy,p,5,(255,0,0),-1)
@@ -76,6 +80,16 @@ hls_img=cv2.cvtColor(filtered_img,cv2.COLOR_BGR2HLS)
 display("hls image",hls_img)
 
 params={'s_thresh_y':120,'l_thresh_y':40,'l_thresh_w':205,
-'orientation_thresh_min':0.0,'orientation_thresh_max':0.5,'magnitude_thresh':40}
+'orientation_thresh_min':0.0,'orientation_thresh_max':0.5,'magnitude_thresh':100}
 lane_mask=lane_thresholding(hls_img,params)
 display("lane mask",lane_mask)
+
+nrows,ncols=lane_mask.shape
+hist=np.sum(lane_mask[nrows//2:nrows,:],axis=0)
+plt.plot(hist)
+plt.show()
+
+leftx=np.argmax(hist[0:ncols//2])
+rightx=np.argmax(hist[ncols//2:ncols])+(ncols//2)
+display("lane mask",lane_mask,[(leftx,nrows-1),(rightx,nrows-1)])
+
